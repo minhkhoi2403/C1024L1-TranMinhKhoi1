@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 2</title>
+</head>
+<body>
+    <h1>Chương trình kiểm tra số hoàn hảo</h1>
+    <label for="numberInput">Nhập số</label>
+    <input type="number" id="numberInput" min="1">
+    <button onclick="checkNumber()">Kiểm tra số</button>
+
+    <h2>Kết quả</h2>
+    <p id="result"></p>
+
+    <script>
+        function perfectNumber(num)  {
+            if (num <= 0) return false;
+
+            let sum = 0;
+            for (let i = 1; i <= num/2; i ++) {
+                if (num % i === 0 ){
+                    sum += i;
+                }
+            }
+        return sum === num;
+        }
+
+        function checkNumber() {
+            const input = document.getElementById("numberInput").value;
+            const number = parseInt(input);
+
+            if (isNaN(number) || number <= 0) {
+                document.getElementById("result").textContent = "Vui lòng nhập một số nguyên dương";
+                return;
+            }
+
+            const result = perfectNumber(number);
+            document.getElementById("result").textContent = result ? `${number} là số hoàn hảo.` : `${number} không phải là số hoàn hảo.`;
+        }
+    </script>
+</body>
+</html>

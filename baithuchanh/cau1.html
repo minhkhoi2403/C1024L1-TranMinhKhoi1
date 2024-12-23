@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu 1</title>
+</head>
+<body>
+  <h1>Chương trình kiểm tra mảng</h1>
+  <label for="numberInput">Nhập các số (cách nhau bởi dấu phẩy): </label>
+  <input type="text" id="numberInput">
+  <button onclick="addNumbers()">Thêm</button>
+  <button onclick="calculateAverage()">Tính trung bình</button>
+  
+  <h2>Mảng:</h2>
+  <p id="arrayDisplay">[ ]</p>
+
+  <h2>Kết quả:</h2>
+  <p id="result"></p>
+
+  <script>
+    const numbers = [];
+
+    function addNumbers() {
+      const input = document.getElementById("numberInput").value;
+      const inputArray = input.split(",").map(num => parseInt(num.trim()));
+
+      
+      if (inputArray.some(isNaN)) {
+        alert("Vui lòng nhập số hợp lệ, có thể nhập một dãy số cách nhay bởi dấu phẩy");
+        return;
+      }
+
+      if (numbers.length + inputArray.length > 50) {
+        alert("Mảng không được vượt quá 50 phần tử!");
+        return;
+      }
+
+      
+      numbers.push(...inputArray);
+      document.getElementById("arrayDisplay").textContent = numbers.join(", ");
+      document.getElementById("numberInput").value = "";
+    }
+
+    function calculateAverage() {
+      const sochiahet3 = numbers.filter(num => num % 3 === 0);
+      
+      if (sochiahet3.length === 0) {
+        document.getElementById("result").textContent = "Không có số nào chia hết cho 3 trong mảng.";
+        return;
+      }
+
+      const sum = sochiahet3.reduce((total, num) => total + num, 0);
+      const average = sum / sochiahet3.length;
+
+      document.getElementById("result").textContent = `Trung bình cộng các số chia hết cho 3 là: ${average.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
