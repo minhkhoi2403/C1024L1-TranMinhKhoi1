@@ -9,11 +9,11 @@
   <h1>Chương trình kiểm tra mảng</h1>
   <label for="numberInput">Nhập các số (cách nhau bởi dấu phẩy): </label>
   <input type="text" id="numberInput">
-  <button onclick="addNumbers()">Thêm</button>
-  <button onclick="calculateAverage()">Tính trung bình</button>
+  <button onclick="themso()">Thêm</button>
+  <button onclick="tb()">Tính trung bình</button>
   
   <h2>Mảng:</h2>
-  <p id="arrayDisplay">[ ]</p>
+  <p id="arr">[ ]</p>
 
   <h2>Kết quả:</h2>
   <p id="result"></p>
@@ -21,7 +21,7 @@
   <script>
     const numbers = [];
 
-    function addNumbers() {
+    function themso() {
       const input = document.getElementById("numberInput").value;
       const inputArray = input.split(",").map(num => parseInt(num.trim()));
 
@@ -38,11 +38,11 @@
 
       
       numbers.push(...inputArray);
-      document.getElementById("arrayDisplay").textContent = numbers.join(", ");
+      document.getElementById("arr").textContent = numbers.join(", ");
       document.getElementById("numberInput").value = "";
     }
 
-    function calculateAverage() {
+    function tb() {
       const sochiahet3 = numbers.filter(num => num % 3 === 0);
       
       if (sochiahet3.length === 0) {
